@@ -1,0 +1,5 @@
+{
+  "name": "CoinRank Dashboard",
+  "description": "A modern, dark-themed cryptocurrency dashboard UI that provides market insights, total balance tracking, a fear & greed index, and a comprehensive list of crypto prices with charts.",
+  "requestFramePermissions": []
+}
