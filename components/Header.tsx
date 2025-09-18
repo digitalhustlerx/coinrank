@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         <button onClick={onMenuClick} className="md:hidden p-2 mr-2 -ml-2 text-light-gray hover:text-white">
           <MenuIcon />
         </button>
-        <div className="relative w-full max-w-xs hidden sm:block">
+        <div className="relative w-full max-w-[160px] sm:max-w-xs">
           <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-light-gray" />
           <input 
             type="text" 

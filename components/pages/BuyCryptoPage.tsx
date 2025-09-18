@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { BitcoinIcon, ChevronDownIcon, CreditCardIcon, BankIcon } from '../Icons';
 
@@ -62,7 +63,7 @@ const BuyCryptoPage: React.FC = () => {
           {/* Payment Method */}
           <div>
             <label className="text-sm font-medium text-light-gray mb-2 block">Payment Method</label>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button 
                 onClick={() => setPaymentMethod('card')}
                 className={`flex items-center p-4 rounded-lg border-2 transition-colors ${paymentMethod === 'card' ? 'border-accent-blue bg-accent-blue/10' : 'border-dark-border bg-dark-bg hover:border-gray-600'}`}>

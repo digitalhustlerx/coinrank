@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { DepositIcon, WithdrawIcon, ExchangeIcon } from '../Icons';
 
@@ -29,39 +30,41 @@ const TransactionsPage: React.FC = () => {
     <div className="space-y-8">
       <h1 className="text-3xl font-bold text-white">Transactions</h1>
       <div className="bg-dark-card border border-dark-border rounded-2xl p-6">
-        <table className="w-full text-left">
-          <thead>
-            <tr className="border-b border-dark-border text-sm text-light-gray">
-              <th className="py-3 px-4 font-normal">Type</th>
-              <th className="py-3 px-4 font-normal">Asset</th>
-              <th className="py-3 px-4 font-normal">Amount</th>
-              <th className="py-3 px-4 font-normal">Date</th>
-              <th className="py-3 px-4 font-normal">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {mockTransactions.map(tx => (
-              <tr key={tx.id} className="border-b border-dark-border hover:bg-white/5 last:border-0">
-                <td className="py-4 px-4">
-                  <div className="flex items-center">
-                    <tx.icon className="w-5 h-5 mr-3 text-light-gray" />
-                    <span className="text-white font-medium">{tx.type}</span>
-                  </div>
-                </td>
-                <td className="py-4 px-4 text-white">{tx.asset}</td>
-                <td className={`py-4 px-4 font-medium ${tx.amount.startsWith('+') ? 'text-green-400' : 'text-red-500'}`}>
-                  {tx.amount}
-                </td>
-                <td className="py-4 px-4 text-light-gray text-sm">{tx.date}</td>
-                <td className="py-4 px-4">
-                  <span className={`px-2 py-1 rounded-full text-xs ${getStatusClass(tx.status)}`}>
-                    {tx.status}
-                  </span>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left min-w-[600px]">
+            <thead>
+              <tr className="border-b border-dark-border text-sm text-light-gray">
+                <th className="py-3 px-4 font-normal">Type</th>
+                <th className="py-3 px-4 font-normal">Asset</th>
+                <th className="py-3 px-4 font-normal">Amount</th>
+                <th className="py-3 px-4 font-normal">Date</th>
+                <th className="py-3 px-4 font-normal">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {mockTransactions.map(tx => (
+                <tr key={tx.id} className="border-b border-dark-border hover:bg-white/5 last:border-0">
+                  <td className="py-4 px-4">
+                    <div className="flex items-center">
+                      <tx.icon className="w-5 h-5 mr-3 text-light-gray" />
+                      <span className="text-white font-medium">{tx.type}</span>
+                    </div>
+                  </td>
+                  <td className="py-4 px-4 text-white">{tx.asset}</td>
+                  <td className={`py-4 px-4 font-medium ${tx.amount.startsWith('+') ? 'text-green-400' : 'text-red-500'}`}>
+                    {tx.amount}
+                  </td>
+                  <td className="py-4 px-4 text-light-gray text-sm">{tx.date}</td>
+                  <td className="py-4 px-4">
+                    <span className={`px-2 py-1 rounded-full text-xs ${getStatusClass(tx.status)}`}>
+                      {tx.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

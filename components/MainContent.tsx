@@ -19,6 +19,7 @@ import SubscriptionPage from './pages/SubscriptionPage';
 import AccountProfilePage from './pages/AccountProfilePage';
 import SettingsPage from './pages/SettingsPage';
 import PortfolioPage from './pages/PortfolioPage';
+import Dashboard2Page from './pages/Dashboard2Page';
 
 interface MainContentProps {
   activePage: string;
@@ -30,6 +31,8 @@ const MainContent: React.FC<MainContentProps> = ({ activePage, onMenuClick }) =>
     switch (activePage) {
       case 'Dashboard':
         return <Dashboard />;
+      case 'Dashboard V2':
+        return <Dashboard2Page />;
       case 'Portfolio':
         return <PortfolioPage />;
       case 'Coins':
@@ -67,7 +70,7 @@ const MainContent: React.FC<MainContentProps> = ({ activePage, onMenuClick }) =>
     }
   };
 
-  const showHeader = activePage !== 'Portfolio';
+  const showHeader = !['Portfolio', 'Dashboard V2'].includes(activePage);
 
   return (
     <main className="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto">

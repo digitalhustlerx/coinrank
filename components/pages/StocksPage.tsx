@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 
@@ -27,35 +28,37 @@ const StocksPage: React.FC = () => {
             <strong>Coming Soon:</strong> Stock trading is not yet available. The data shown below is for illustrative purposes only.
         </div>
         
-        <table className="w-full text-left">
-          <thead>
-            <tr className="border-b border-dark-border text-sm text-light-gray">
-              <th className="py-3 px-4 font-normal">Name</th>
-              <th className="py-3 px-4 font-normal">Price</th>
-              <th className="py-3 px-4 font-normal">Change</th>
-              <th className="py-3 px-4 font-normal">Market Cap</th>
-              <th className="py-3 px-4 font-normal text-right">7D Chart</th>
-            </tr>
-          </thead>
-          <tbody>
-            {mockStocks.map(stock => (
-              <tr key={stock.ticker} className="border-b border-dark-border hover:bg-white/5 last:border-0">
-                <td className="py-4 px-4">
-                  <p className="font-medium text-white">{stock.name}</p>
-                  <p className="text-sm text-light-gray">{stock.ticker}</p>
-                </td>
-                <td className="py-4 px-4 font-medium text-white">${stock.price.toFixed(2)}</td>
-                <td className={`py-4 px-4 font-medium ${stock.change >= 0 ? 'text-green-400' : 'text-red-500'}`}>
-                  {stock.change.toFixed(2)} ({stock.changePercent.toFixed(2)}%)
-                </td>
-                <td className="py-4 px-4 text-white">${stock.marketCap}</td>
-                <td className="py-4 px-4 flex justify-end">
-                    <Sparkline data={stock.graphData} isPositive={stock.change >= 0} />
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left min-w-[600px]">
+            <thead>
+              <tr className="border-b border-dark-border text-sm text-light-gray">
+                <th className="py-3 px-4 font-normal">Name</th>
+                <th className="py-3 px-4 font-normal">Price</th>
+                <th className="py-3 px-4 font-normal">Change</th>
+                <th className="py-3 px-4 font-normal hidden md:table-cell">Market Cap</th>
+                <th className="py-3 px-4 font-normal text-right">7D Chart</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {mockStocks.map(stock => (
+                <tr key={stock.ticker} className="border-b border-dark-border hover:bg-white/5 last:border-0">
+                  <td className="py-4 px-4">
+                    <p className="font-medium text-white">{stock.name}</p>
+                    <p className="text-sm text-light-gray">{stock.ticker}</p>
+                  </td>
+                  <td className="py-4 px-4 font-medium text-white">${stock.price.toFixed(2)}</td>
+                  <td className={`py-4 px-4 font-medium ${stock.change >= 0 ? 'text-green-400' : 'text-red-500'}`}>
+                    {stock.change.toFixed(2)} ({stock.changePercent.toFixed(2)}%)
+                  </td>
+                  <td className="py-4 px-4 text-white hidden md:table-cell">${stock.marketCap}</td>
+                  <td className="py-4 px-4 flex justify-end">
+                      <Sparkline data={stock.graphData} isPositive={stock.change >= 0} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

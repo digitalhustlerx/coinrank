@@ -35,6 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, isOpen, se
         title: "MAIN",
         items: [
             { icon: <DashboardIcon />, label: 'Dashboard' },
+            { icon: <DashboardIcon />, label: 'Dashboard V2' },
             { icon: <PortfolioIcon />, label: 'Portfolio' },
             { icon: <CoinsIcon />, label: 'Coins' },
         ]
